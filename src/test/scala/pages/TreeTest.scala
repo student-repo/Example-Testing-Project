@@ -26,27 +26,21 @@ class TreeTest extends TestSuite {
 //        cssSelector(".example").element.underlying.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/ul")).getAttribute("innerHTML") should be ("123")
 //        cssSelector(".example").element.underlying.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).getAttribute("innerHTML") should be ("123")
 //        cssSelector(".example").element.underlying.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).click
-        sum(l)
+        sum(l, cssSelector(".example").element.underlying)
 
 //      }
 
       def sum(xs: List[String],foo: WebElement): Unit = {
         xs match {
           case x :: tail => {
-//            cssSelector(".example").element.underlying.findElement(By.xpath(s".//span[text()='$x']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).click
             if(tail != 0) {
-              cssSelector(".example").element.underlying.findElement(By.xpath(s".//span[text()='$x']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).click
-              sum(tail)
+              foo.findElement(By.xpath(s".//span[text()='$x']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).click
+              sum(tail,foo.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/ul")))
             }
             else {
-              cssSelector(".example").element.underlying.findElement(By.xpath(s".//span[text()='$x']/parent::span")).click
-              sum(tail)
+              foo.findElement(By.xpath(s".//span[text()='$x']/parent::span")).click
             }
           }
-//          {
-//            if(tail != 0) cssSelector(".example").element.underlying.findElement(By.xpath(s".//span[text()='$x']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).click
-//            else cssSelector(".example").element.underlying.findElement(By.xpath(s".//span[text()='$x']/parent::span")).click
-//          }
           case Nil => 0
         }
       }
