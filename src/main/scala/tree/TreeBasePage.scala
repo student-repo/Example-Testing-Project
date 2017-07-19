@@ -1,14 +1,14 @@
-package pages
+package tree
 
 import org.openqa.selenium.{JavascriptExecutor, WebDriver}
 import org.scalatest.concurrent.Eventually
 import org.scalatest.selenium.{Page, WebBrowser}
 import org.scalatest.time.{Seconds, Span}
 
-class BasePage(val path: String)(implicit webDriver: WebDriver) extends Page with WebBrowser with Eventually {
+class TreeBasePage(val path: String)(implicit webDriver: WebDriver) extends Page with WebBrowser with Eventually {
   override implicit val patienceConfig = PatienceConfig(timeout = Span(10, Seconds))
 
-  val host: String = "https://www.hdi.global"
+  val host: String = "http://react-component.github.io/tree/examples/animation.html"
   override val url: String = host + path
 
   def open(): Unit =
