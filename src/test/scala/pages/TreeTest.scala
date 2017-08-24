@@ -1,6 +1,5 @@
 package pages
 
-import org.openqa.selenium.{By, WebElement}
 import tree.TreePage
 
 
@@ -15,44 +14,14 @@ class TreeTest extends TestSuite {
       go to treePage
 
       eventually {
-        pageTitle should startWith ("animation.js - example - rc-tree@1.5.0")
+        pageTitle should startWith ("animation.js - example - rc-tree@1.7.2")
       }
     }
-
-    "be able to  homePage" in {
-//      eventually {
-
-        val l = List("parent 1-1", "parent 2-1, leaf")
-//        cssSelector(".example").element.underlying.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/ul")).getAttribute("innerHTML") should be ("123")
-//        cssSelector(".example").element.underlying.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).getAttribute("innerHTML") should be ("123")
-//        cssSelector(".example").element.underlying.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).click
-        sum(l, cssSelector(".example").element.underlying)
-
-//      }
-
-      def sum(xs: List[String],foo: WebElement): Unit = {
-        xs match {
-          case x :: tail => {
-            if(tail != 0) {
-              foo.findElement(By.xpath(s".//span[text()='$x']/parent::span/parent::li/span[contains(@class, 'rc-tree-switcher')]")).click
-              sum(tail,foo.findElement(By.xpath(".//span[text()='parent 1']/parent::span/parent::li/ul")))
-            }
-            else {
-              foo.findElement(By.xpath(s".//span[text()='$x']/parent::span")).click
-            }
-          }
-          case Nil => 0
-        }
-      }
-
-
-      var x = 0
-      while(x == 0) {
-
-      }
-        eventually {
-        "123" should be ("122122112")
-      }
+//    "fofo" in {
+//      "2132" should be ("222222")
+//    }
+    "be able to select item in directory tree" in {
+      treePage.selectTreeElement("parent 1-1/parent 2-1/leaf")
     }
   }
 }
