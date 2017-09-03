@@ -4,6 +4,8 @@ import com.relevantcodes.extentreports.{ExtentTest, LogStatus}
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.{ChromeDriver, ChromeOptions}
 import org.openqa.selenium.firefox.FirefoxDriver
+import org.openqa.selenium.ie.InternetExplorerDriver
+import org.openqa.selenium.remote.DesiredCapabilities
 import org.scalatest.concurrent.Eventually
 import org.scalatest.selenium.WebBrowser
 import org.scalatest.time.{Seconds, Span}
@@ -26,10 +28,14 @@ with BeforeAndAfterAllConfigMap {
 
   override protected def beforeAll(configMap: ConfigMap): Unit = {
     println(configMap)
-    //    webDriver = new ChromeDriver(option)
 
-//        webDriver = new ChromeDriver
-    webDriver = new FirefoxDriver
+
+    /*to run on ie*/
+//    val capabilities = DesiredCapabilities.internetExplorer
+//    capabilities.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true)
+//    webDriver = new InternetExplorerDriver(capabilities)
+
+    webDriver = new ChromeDriver
     extentTest = extentReport.startTest(getClass.getName)
   }
 
@@ -76,22 +82,4 @@ with BeforeAndAfterAllConfigMap {
 
     }
   }
-
-
-//  override def beforeAll(): Unit = {
-////    webDriver = new ChromeDriver(option)
-//
-////    webDriver = new ChromeDriver
-//    webDriver = new FirefoxDriver
-//    extentTest = extentReport.startTest(getClass.getName)
-//  }
-
-//  override def afterAll(): Unit = {
-//    extentReport.endTest(extentTest)
-//    cancelRemaining = false
-////    close()
-//    quit()
-//  }
-
-
 }

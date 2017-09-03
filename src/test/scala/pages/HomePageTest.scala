@@ -17,10 +17,14 @@ class HomePageTest extends TestSuite {
   "The user" should {
     "be able to display homePage" in {
 
+
+      go to "https://www.hdi.global/de/en"
+
       homePage = new HomePage
 
-      go to homePage
-
+      eventually {
+        homePage.foo should be ("WE ARE")
+      }
       eventually {
         pageTitle should startWith ("HDI Global SE")
       }

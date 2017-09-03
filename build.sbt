@@ -8,7 +8,8 @@ libraryDependencies ++= Seq(
   "org.seleniumhq.selenium" % "selenium-java" % "3.4.0",
   "org.apache.commons" % "commons-lang3" % "3.6",
   "org.apache.commons" % "commons-text" % "1.1",
-  "com.relevantcodes" % "extentreports" % "2.41.2"
+  "com.relevantcodes" % "extentreports" % "2.41.2",
+  "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.6"
 )
 
 name := "Example-Testing-Project"

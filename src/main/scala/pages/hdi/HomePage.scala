@@ -13,7 +13,11 @@ class HomePage(implicit webDriver: WebDriver) extends BasePage("/de/en") {
 
   val topMenu = new TopNavBar
 
-  def clickAcceptCookie:Unit =
+  var foo: String = eventually {
+    cssSelector(".we-are").element.underlying.getText
+  }
+
+  def clickAcceptCookie: Unit =
     click on cssSelector(acceptCookieSelector).element.underlying
 
   def clickSelectLanguage:LanguageMenu = {

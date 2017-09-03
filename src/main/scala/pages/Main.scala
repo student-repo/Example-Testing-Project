@@ -5,10 +5,22 @@ import com.relevantcodes.extentreports.ExtentReports
 /**
   * Created by ubuntu-master on 23.07.17.
   */
+
+class Foo1
+class Foo extends Foo1  with SomeMethodHandler{
+  protected def someMenu: SomeMenu = new SomeMenu
+//
+//def method1 = someMenu.method1
+}
+
 object Main {
   var extentReport: ExtentReports = new ExtentReports("/home/ubuntu-master/Desktop/lern-automation.html")
 
   def main(args: Array[String]): Unit = {
+
+    val foo10 = new Foo
+
+    foo10.method1
 
 //    println(fibonacci(5))
 //
